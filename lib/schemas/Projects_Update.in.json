@@ -1,0 +1,139 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "rootResourceName": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The parameters to update a project resource.",
+            "properties": {
+                "properties": {
+                    "description": "Custom properties of project resource.",
+                    "properties": {
+                        "pipelineBootstrapConfigurations": {
+                            "description": "Bootstrap configurations for pipelines in Team Project.",
+                            "items": {
+                                "description": "Defines bootstrap configuration for a CI/CD pipeline.",
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of the bootstrap configuration.",
+                                        "type": "string"
+                                    },
+                                    "repository": {
+                                        "description": "Code repository where the application source resides.",
+                                        "properties": {
+                                            "authorization": {
+                                                "description": "Authorization info to access code repository",
+                                                "properties": {
+                                                    "authorizationType": {
+                                                        "description": "Type of authorization.",
+                                                        "enum": [
+                                                            "authorizationToken",
+                                                            "personalAccessToken"
+                                                        ],
+                                                        "type": "string",
+                                                        "x-ms-enum": {
+                                                            "modelAsString": true,
+                                                            "name": "AuthorizationType"
+                                                        }
+                                                    },
+                                                    "parameters": {
+                                                        "additionalProperties": {
+                                                            "type": "string"
+                                                        },
+                                                        "description": "Authorization parameters corresponding to the authorization type.",
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "authorizationType"
+                                                ],
+                                                "type": "object"
+                                            },
+                                            "defaultBranch": {
+                                                "description": "Default branch for which continuous integration should be configured in the VSTS pipeline.",
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "description": "Unique identifier of the code repository.",
+                                                "type": "string"
+                                            },
+                                            "properties": {
+                                                "additionalProperties": {
+                                                    "type": "string"
+                                                },
+                                                "description": "Repository-specific properties.",
+                                                "type": "object"
+                                            },
+                                            "repositoryType": {
+                                                "description": "Type of code repository.",
+                                                "enum": [
+                                                    "gitHub",
+                                                    "vstsGit"
+                                                ],
+                                                "type": "string",
+                                                "x-ms-enum": {
+                                                    "modelAsString": true,
+                                                    "name": "CodeRepositoryType"
+                                                }
+                                            }
+                                        },
+                                        "required": [
+                                            "repositoryType",
+                                            "id",
+                                            "defaultBranch"
+                                        ],
+                                        "type": "object"
+                                    },
+                                    "templateId": {
+                                        "description": "Identifier of the pipeline template used for configuring pipeline.",
+                                        "type": "string"
+                                    },
+                                    "templateParameters": {
+                                        "additionalProperties": {
+                                            "type": "string"
+                                        },
+                                        "description": "Dictionary of inputs used for configuring pipeline. The keys for inputs are defined by pipeline template.",
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "templateId"
+                                ],
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The custom tags to be set on the resource.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
