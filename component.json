@@ -1,5 +1,5 @@
 {
-    "title": "Visual Studio Projects Resource Provider Client",
+    "title": "Visual Studio Projects Resource Provider Client (visualstudio-Projects)",
     "description": "Use these APIs to manage Visual Studio Team Services resources through the Azure Resource Manager. All task operations conform to the HTTP/1.1 protocol specification and each operation returns an x-ms-request-id header that can be used to obtain information about the request. You must make sure that requests made to these resources are secure. For more information, see https://docs.microsoft.com/en-us/rest/api/index.",
     "docsUrl": "",
     "url": "https://api.apis.guru/v2/specs/azure.com/visualstudio-Projects/2018-08-01-preview/swagger.json",
@@ -26,7 +26,7 @@
                 "label": "Custom Server URL",
                 "viewClass": "TextFieldView"
             },
-            "azure_auth": {
+            "oauth2": {
                 "label": "Azure Active Directory OAuth2 Flow",
                 "viewClass": "OAuthFieldView"
             }
@@ -34,7 +34,11 @@
         "oauth2": {
             "client_id": "{{OAUTH_CLIENT_ID}}",
             "client_secret": "{{OAUTH_CLIENT_SECRET}}",
-            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize",
+            "token_uri": "https://login.microsoftonline.com/common/oauth2/token",
+            "scopes": [
+                "user_impersonation"
+            ]
         }
     },
     "triggers": {
